@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  php1:
+    build: ./php1
+    ports:
+      - '8001:80'
+
+  php2:
+    build: ./php2
+    ports:
+      - '8002:80'
+
+  vue1:
+    build: ./vue1
+    ports:
+      - '8003:80'
+
+  vue2:
+    build: ./vue2
+    ports:
+      - '8004:80'
+      
+  vue3:
+    build: ./vue3
+    ports:
+      - '8005:80'
+
+  gateway:
+    build: ./gateway
+    ports:
+      - '80:80'
+    depends_on:
+      - php1
+      - php2
+      - vue1
+      - vue2
+      - vue3
